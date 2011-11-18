@@ -1,12 +1,12 @@
 require 'spec_helper'
 require 'importer'
 require 'csv'
-describe Util::Importer do
+describe Importer do
   let(:path) do
     File.dirname(__FILE__) + "/../data/test.csv" 
   end
   let(:importer) do
-    Util::Importer.new(path)
+    Importer.new(path)
   end
   
   let(:data) do
