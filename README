@@ -1,3 +1,8 @@
+Requirements.
+You need to have sqlite3 installed, ruby 1.9.2 and  also the bundler and rake gems. 
+
+This sequence was test on a Mac running Snow Leopard
+
 1. Clone the gir repository
 git clone git@github.com:efrendiaz/data-engineering.git
 
