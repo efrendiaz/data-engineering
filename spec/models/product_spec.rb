@@ -26,6 +26,14 @@ describe Product do
     product.should_not be_valid
   end
 
+  it "should have a unique description" do
+    product.description = "product 2"
+    second_product = product.dup
+    product.save!
+    second_product.should_not be_valid
+    second_product.errors[:description].should_not be_blank
+  end
+  
   it "should not be valid without a merchant" do
     product.merchant = nil
     product.should_not be_valid

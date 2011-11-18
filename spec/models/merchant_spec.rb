@@ -25,15 +25,32 @@ describe Merchant do
     merchant.should_not be_valid
   end
 
+  it "should have an unique name" do
+    merchant.name = "name2"
+    second_merchant = merchant.dup
+    merchant.save
+    second_merchant.should be_invalid
+    second_merchant.errors[:name].should_not be_blank
+  end
+
   it "should not be valid without an address" do
     merchant.address = nil
     merchant.should_not be_valid
+  end
+
+  it "should have an unique address" do
+    merchant.address = "address2"
+    second_merchant = merchant.dup
+    merchant.save
+    second_merchant.should be_invalid
+    second_merchant.errors[:address].should_not be_blank
   end
 
   it "should allow many products" do
     merchant.save!
     second_product = product.dup
     product.save!
+    second_product.description = "second"
     second_product.save
     merchant.products.size.should ==2
   end
