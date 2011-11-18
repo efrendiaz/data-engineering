@@ -36,7 +36,7 @@ describe HomeController do
 
     it "should redirect to /home/index on success" do
       post 'create', params
-      response.should redirect_to(home_index_url)
+      response.should render_template("index")
     end
 
     it "should use the importer to import new data" do

@@ -1,6 +1,8 @@
-<h1>Home#index</h1>
+<h1>Data-Engineering Home</h1>
 <%= form_tag home_create_path, :multipart => true do %>
   <label for="file">File to Upload</label> <%= file_field_tag "file" %>
-  <%= submit_tag %>
+  <%= submit_tag "Import Data" %>
 <% end %>
-<%= @file_path %>
+<% if @income %>
+<h2>Gross Revenue for this import: <%= number_to_currency(@income) %></h2>
+<% end %>

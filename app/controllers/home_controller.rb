@@ -1,6 +1,5 @@
 class HomeController < ApplicationController
   def index
-    "test"
   end
 
   def new
@@ -8,9 +7,9 @@ class HomeController < ApplicationController
 
   def create
     importer = Importer.new(params[:file])
-    importer.import_data
+    @income = importer.import_data
     respond_to do |format|
-      format.html { redirect_to(home_index_url) }
+      format.html { render "index" }
     end
   end
 
