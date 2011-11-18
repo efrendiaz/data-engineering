@@ -8,6 +8,24 @@ require 'rspec/autorun'
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
+module ControllerMacros
+  def login_user
+    before(:each) do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      user = create_user
+      sign_in user
+    end
+  end
+
+  def create_user
+    u = User.new
+    u.email = "test@test.com"
+    u.identity_url = "http://test.myopenidtest.com/"
+    u.save!
+    u
+  end
+end
+
 RSpec.configure do |config|
   # == Mock Framework
   #
@@ -30,4 +48,6 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
+  config.extend ControllerMacros, :type => :controller
+ 
 end

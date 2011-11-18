@@ -1,7 +1,8 @@
 require 'spec_helper'
 
 describe HomeController do
-
+ include ControllerMacros
+  login_user
   describe "GET 'index'" do
     it "returns http success" do
       get 'index'

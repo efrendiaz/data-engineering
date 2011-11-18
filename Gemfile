@@ -29,6 +29,9 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'devise','1.5.0'
+gem 'rack-openid','1.3.1'
+gem 'devise_openid_authenticatable',"1.0.0.beta2"
 group :development, :test do
   gem 'rspec-rails'
 end
