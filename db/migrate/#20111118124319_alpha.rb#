@@ -1,0 +1,10 @@
+class Alpha < ActiveRecord::Migration
+  def up
+    create_table :customer do |c|
+      c.
+    end
+  end
+
+  def down
+  end
+end
