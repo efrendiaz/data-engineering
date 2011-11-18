@@ -24,5 +24,8 @@ describe Importer do
     Product.count.should == 2
     Sale.count.should == 4
   end
-  
+
+  it "should return the gross revenue" do
+    importer.import_data.should == 100.0
+  end
 end

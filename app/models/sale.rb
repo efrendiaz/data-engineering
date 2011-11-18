@@ -1,6 +1,6 @@
 class Sale < ActiveRecord::Base
   belongs_to :customer
-  has_one :product
+  belongs_to :product
   validates :customer, :presence => true
   validates :product, :presence => true
   validates :product_count,:presence =>true

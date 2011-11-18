@@ -11,6 +11,7 @@ class Importer
   def import_data
     data = parse
     data.delete(data.first)
+    gross_revenue = 0
     data.each do|row|
       begin 
         customer = Customer.find_or_create_by_name(row[0],
@@ -23,14 +24,14 @@ class Importer
                                         :merchant => merchant,
                                         :description => row[1],
                                         :price =>row[2])
-        
+        gross_revenue += product.price * row[3].to_f
         Sale.new(:product => product,
                  :customer => customer,
                  :product_count => row[3]).save!
-      rescue ActiveRecord::RecordInvalid
-        
+      rescue ActiveRecord::RecordInvalid        
       end
     end
+    gross_revenue   
   end
 end
 
